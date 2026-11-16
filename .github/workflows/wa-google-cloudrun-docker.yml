@@ -10,7 +10,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Lint
-        id : lint-step
+        id: lint-step
         #continue-on-error: true
         run: npm run lint
       - name: check-lint
@@ -34,8 +34,8 @@ jobs:
         with:
           context: ./
           push: true
-          dockerfile: ./Dockerfile   # Specify the path to your Dockerfile here
-          tags: moisesgc/webacademy:latest
+          file: ./Dockerfile
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/webacademy:latest
   deploy:
     needs: lint
     name: Setup Gcloud Account
